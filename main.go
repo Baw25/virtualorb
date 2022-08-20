@@ -17,7 +17,6 @@ func SetupServerRoutes(router *gin.Engine) *gin.Engine {
 	{
 		v1.POST("/report", orb.PostStatusReport)
 		v1.POST("/signup", orb.PostSignup)
-		v1.POST("/signup/batch", orb.PostSignupBatch)
 		v1.GET("/health", func(c *gin.Context) {
 			c.JSON(200, gin.H{
 				"status": "ok",

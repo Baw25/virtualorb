@@ -2,7 +2,6 @@ package status_report
 
 import (
 	"fmt"
-	"log"
 	"math"
 	"math/rand"
 	"os/exec"
@@ -14,9 +13,7 @@ import (
 	"github.com/distatus/battery"
 	"github.com/shirou/gopsutil/cpu"
 
-	// "github.com/shirou/gopsutil/v3/host"
 	"github.com/ssimunic/gosensors"
-	// "github.com/rsjethani/sysinfo"
 
 	"github.com/shirou/gopsutil/disk"
 )
@@ -38,6 +35,7 @@ type StatusReport struct {
 	DeviceDiskSpaceAvailablePercent string `json:"device_disk_space_available_percent"`
 }
 
+// Generate the entire status report: battery, cpu usage, cpu temp, disk space information
 func GenerateSingleStatusReport() (StatusReport, error) {
 	var newStatusReport StatusReport
 	var reportError error
@@ -120,27 +118,32 @@ func GetCPUTemp() (string, error) {
 	var cpuTemp string
 
 	if runtime.GOOS == Windows {
-		// TODO: need to implement for windows
+		// TODO: need to implement for windows - generate randomly for now
+		cpuTemp = strconv.Itoa(randInt(40, 50)) + "°C"
+		return cpuTemp, nil
 	} else if runtime.GOOS == Darwin {
+		// TODO: find clean way across various OS. In reality, this would be written for the OS of the actual orb
 		out, err := exec.Command("./osx-cpu-temp/osx-cpu-temp").Output()
 		if err != nil {
-			log.Fatal(err)
+			return "0.0 °C", err
 		}
 		outStr := string(out[:])
 		cpuTemp = outStr
 
 		// If cputemp results in 0.0, then spoof temperature
-		// osx-cpu-temp utility does not work for M1 chips
+		// osx-cpu-temp utility does not work for Apple M1 chips
 		if strings.Contains(cpuTemp, "0.0") {
 			cpuTemp = strconv.Itoa(randInt(40, 50)) + "°C"
 		}
 
 		return cpuTemp, nil
 	} else if runtime.GOOS == Linux {
+		// Gosensors assumes the presence of lm-sensors available on linux machines
+		// See: https://github.com/ssimunic/gosensors
 		sensors, err := gosensors.NewFromSystem()
 		var cpuTemp string
 		if err != nil {
-			return "", err
+			return "0.0 °C", err
 		}
 		for chip := range sensors.Chips {
 			for key, value := range sensors.Chips[chip] {
@@ -153,10 +156,10 @@ func GetCPUTemp() (string, error) {
 		return cpuTemp, nil
 	}
 
-	return "", nil
+	return "0.0 °C", nil
 }
 
-// Only grab the disk space from the system space or app file system
+// For the sake virtualorb, only grab the disk space from the system space or app file system
 func GetDeviceDiskSpace() (float64, float64, error) {
 	var deviceDiskSpaceUsed float64
 	var deviceDiskSpaceAvailable float64

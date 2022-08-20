@@ -10,6 +10,7 @@ require (
 	github.com/dustin/go-humanize v1.0.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/rsjethani/sysinfo v0.0.0-20190113140659-2f81d21cee52
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/shirou/gopsutil v3.21.11+incompatible
 	github.com/shirou/gopsutil/v3 v3.22.7 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
