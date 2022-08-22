@@ -10,11 +10,12 @@ require (
 	github.com/dustin/go-humanize v1.0.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/rsjethani/sysinfo v0.0.0-20190113140659-2f81d21cee52
-	github.com/satori/go.uuid v1.2.0 // indirect
+	github.com/satori/go.uuid v1.2.0
 	github.com/shirou/gopsutil v3.21.11+incompatible
 	github.com/shirou/gopsutil/v3 v3.22.7 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/spf13/viper v1.12.0
 	github.com/ssimunic/gosensors v0.0.0-20170414000417-e7ab9a4e799b
+	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77 // indirect
 )

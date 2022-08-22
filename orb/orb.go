@@ -52,7 +52,6 @@ func PostStatusReport(c *gin.Context) {
 func PostSignup(c *gin.Context) {
 	var requestBody SignupRequestBody
 	var backendRequestBody signup.Signup
-
 	body, requestErr := ioutil.ReadAll(c.Request.Body)
 	if requestErr != nil {
 		log.Fatal(requestErr)

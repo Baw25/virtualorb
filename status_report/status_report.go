@@ -148,7 +148,7 @@ func GetCPUTemp() (string, error) {
 		for chip := range sensors.Chips {
 			for key, value := range sensors.Chips[chip] {
 				if key == "CPU" {
-					cpuTemp = value
+					cpuTemp = value + " °C"
 					break
 				}
 			}
