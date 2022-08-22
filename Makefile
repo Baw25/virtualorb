@@ -3,12 +3,12 @@ compile:
 	go build 
 
 clean:
-	(cd osx-cpu-temp && rm -rf osx-cpu-temp)
+	(cd osx-cpu && rm -rf osx-cpu)
 
-build_osx_cputemp:
-	(cd osx-cpu-temp && make)
+build_osx_cpu:
+	(cd osx-cpu && make)
 
-build: clean compile build_osx_cputemp
+build: clean compile build_osx_cpu
 
 run: 
 	PORT=5000 ./virtualorb

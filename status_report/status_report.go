@@ -123,7 +123,7 @@ func GetCPUTemp() (string, error) {
 		return cpuTemp, nil
 	} else if runtime.GOOS == Darwin {
 		// TODO: find clean way across various OS. In reality, this would be written for the OS of the actual orb
-		out, err := exec.Command("./osx-cpu-temp/osx-cpu-temp").Output()
+		out, err := exec.Command("./osx-cpu/osx-cpu").Output()
 		if err != nil {
 			return "0.0 °C", err
 		}
