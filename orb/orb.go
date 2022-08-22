@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	MOCK_VORB_BACKEND = "https://virtualorb-mock-backend.free.beeceptor.com"
+	MOCK_VORB_BACKEND = "https://virtualorb-mock-backend-2.free.beeceptor.com"
 )
 
 type SignupRequestBody struct {

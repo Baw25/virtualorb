@@ -15,7 +15,7 @@ Make sure to have the following:
 - [`go >= 1.16`](https://go.dev/doc/install)
 - [`gin web framework = 1.8.1`](https://github.com/gin-gonic/gin#installation)
 - [`osx-cpu-temp project`](https://github.com/lavoiesl/osx-cpu-temp)
-- [`beeceptor mock API`](https://virtualorb-mock-backend.free.beeceptor.com/)
+- [`beeceptor mock API`](https://virtualorb-mock-backend-2.free.beeceptor.com) (only 50 request per day)
 - lm-sensors (if you have linux machine)
 
 ### Getting Started
